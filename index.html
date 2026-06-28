@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>School FTF & NSB Register</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0d6efd">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>School FTF & NSB Register</h1>
+
+<button id="themeBtn">
+Dark / Light
+</button>
+
+</header>
+
+<nav>
+
+<button class="tab active" data-tab="ftf">
+FTF Register
+</button>
+
+<button class="tab" data-tab="nsb">
+NSB Register
+</button>
+
+</nav>
+
+<!-- ========================= -->
+<!-- FTF REGISTER -->
+<!-- ========================= -->
+
+<section id="ftf" class="page active">
+
+<h2>FTF Register</h2>
+
+<div class="card">
+
+<input type="text" id="schoolName"
+placeholder="School Name">
+
+<select id="className">
+
+<option>Nursery</option>
+<option>Prep</option>
+<option>Class 1</option>
+<option>Class 2</option>
+<option>Class 3</option>
+<option>Class 4</option>
+<option>Class 5</option>
+<option>Class 6</option>
+<option>Class 7</option>
+<option>Class 8</option>
+<option>Class 9</option>
+<option>Class 10</option>
+
+</select>
+
+<input type="number"
+id="strength"
+placeholder="Student Strength">
+
+<input type="number"
+id="rate"
+value="20">
+
+<input type="number"
+id="fine"
+placeholder="Fine">
+
+<input type="number"
+id="concession"
+placeholder="Concession">
+
+<input type="text"
+id="month"
+placeholder="Month">
+
+<input type="date"
+id="date">
+
+<input type="number"
+id="year"
+placeholder="Year">
+
+<button id="addFTF">
+Save FTF Record
+</button>
+
+</div>
+
+<h3>FTF Records</h3>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Class</th>
+<th>Strength</th>
+<th>FTF</th>
+<th>Fine</th>
+<th>Concession</th>
+<th>Total</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="ftfTable">
+
+</tbody>
+
+</table>
+
+<div class="summary">
+
+<h3>Total Students :
+<span id="totalStudents">0</span></h3>
+
+<h3>Total FTF :
+Rs <span id="totalFTF">0</span></h3>
+
+<h3>Grand Total :
+Rs <span id="grandTotal">0</span></h3>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- NSB REGISTER -->
+<!-- ========================= -->
+
+<section id="nsb" class="page">
+
+<h2>NSB Register</h2>
+
+<div class="card">
+
+<input type="number"
+id="totalAmount"
+placeholder="Total Amount">
+
+<input type="number"
+id="consumption"
+placeholder="Consumption">
+
+<input type="number"
+id="assets"
+placeholder="Assets">
+
+<button id="addNSB">
+
+Save NSB Record
+
+</button>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Total</th>
+<th>Consumption</th>
+<th>Assets</th>
+<th>Remaining</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="nsbTable">
+
+</tbody>
+
+</table>
+
+</section>
+
+<footer>
+
+<p>
+
+School FTF & NSB Register
+Version 1.0
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
