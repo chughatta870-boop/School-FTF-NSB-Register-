@@ -1,0 +1,233 @@
+/* ==========================
+   School FTF & NSB Register
+   style.css
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f3f5f9;
+    color:#222;
+    transition:.3s;
+}
+
+header{
+    background:#0d6efd;
+    color:#fff;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+header h1{
+    font-size:24px;
+}
+
+#themeBtn{
+    border:none;
+    background:#fff;
+    color:#0d6efd;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    padding:15px;
+    flex-wrap:wrap;
+}
+
+.tab{
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    background:#ddd;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.tab.active{
+    background:#0d6efd;
+    color:#fff;
+}
+
+.page{
+    display:none;
+    padding:20px;
+}
+
+.page.active{
+    display:block;
+}
+
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    margin-bottom:20px;
+}
+
+.card input,
+.card select{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.card button{
+    width:100%;
+    padding:13px;
+    background:#198754;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.card button:hover{
+    background:#157347;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    margin-top:15px;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+th{
+    background:#0d6efd;
+    color:#fff;
+    padding:12px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+tr:hover{
+    background:#f1f1f1;
+}
+
+.summary{
+    background:#fff;
+    margin-top:20px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 8px rgba(0,0,0,.15);
+}
+
+.summary h3{
+    margin:12px 0;
+}
+
+footer{
+    margin-top:30px;
+    text-align:center;
+    background:#0d6efd;
+    color:#fff;
+    padding:15px;
+}
+
+/* Action Buttons */
+
+.editBtn{
+    background:#ffc107;
+    color:#000;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.deleteBtn{
+    background:#dc3545;
+    color:#fff;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* Dark Mode */
+
+.dark{
+    background:#1b1b1b;
+    color:#fff;
+}
+
+.dark .card,
+.dark table,
+.dark .summary{
+    background:#2b2b2b;
+    color:#fff;
+}
+
+.dark td{
+    border-color:#444;
+}
+
+.dark input,
+.dark select{
+    background:#333;
+    color:#fff;
+    border:1px solid #555;
+}
+
+.dark tr:hover{
+    background:#3d3d3d;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    gap:10px;
+}
+
+header h1{
+    font-size:20px;
+    text-align:center;
+}
+
+table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+.tab{
+    width:100%;
+}
+
+.card button{
+    font-size:15px;
+}
+
+.summary h3{
+    font-size:18px;
+}
+
+}
