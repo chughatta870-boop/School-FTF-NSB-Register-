@@ -154,3 +154,102 @@ document.getElementById("year").value="";
 // -------------------------------
 
 renderFTF();
+// ===============================
+// Render FTF Records
+// ===============================
+
+function renderFTF() {
+
+    const table = document.getElementById("ftfTable");
+    table.innerHTML = "";
+
+    let totalStudents = 0;
+    let totalFTF = 0;
+    let grandTotal = 0;
+
+    ftfData.forEach((item, index) => {
+
+        totalStudents += item.strength;
+        totalFTF += item.totalFTF;
+        grandTotal += item.grandTotal;
+
+        table.innerHTML += `
+        <tr>
+            <td>${item.cls}</td>
+            <td>${item.strength}</td>
+            <td>Rs ${item.totalFTF}</td>
+            <td>Rs ${item.fine}</td>
+            <td>Rs ${item.concession}</td>
+            <td>Rs ${item.grandTotal}</td>
+
+            <td>
+                <button class="editBtn"
+                    onclick="editFTF(${index})">
+                    Edit
+                </button>
+
+                <button class="deleteBtn"
+                    onclick="deleteFTF(${index})">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        `;
+
+    });
+
+    document.getElementById("totalStudents").textContent = totalStudents;
+    document.getElementById("totalFTF").textContent = totalFTF;
+    document.getElementById("grandTotal").textContent = grandTotal;
+
+}
+
+// ===============================
+// Delete Record
+// ===============================
+
+function deleteFTF(index){
+
+    if(confirm("Delete this record?")){
+
+        ftfData.splice(index,1);
+
+        localStorage.setItem(
+            "ftfData",
+            JSON.stringify(ftfData)
+        );
+
+        renderFTF();
+
+    }
+
+}
+
+// ===============================
+// Edit Record
+// ===============================
+
+function editFTF(index){
+
+    const item = ftfData[index];
+
+    document.getElementById("schoolName").value = item.school;
+    document.getElementById("className").value = item.cls;
+    document.getElementById("strength").value = item.strength;
+    document.getElementById("rate").value = item.rate;
+    document.getElementById("fine").value = item.fine;
+    document.getElementById("concession").value = item.concession;
+    document.getElementById("month").value = item.month;
+    document.getElementById("date").value = item.date;
+    document.getElementById("year").value = item.year;
+
+    ftfData.splice(index,1);
+
+    localStorage.setItem(
+        "ftfData",
+        JSON.stringify(ftfData)
+    );
+
+    renderFTF();
+
+}
