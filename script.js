@@ -416,3 +416,130 @@ document.getElementById("assets").value="";
 
 renderFTF();
 renderNSB();
+// ===============================
+// Print Register
+// ===============================
+
+function printRegister() {
+    window.print();
+}
+
+// ===============================
+// Export FTF Data to CSV
+// ===============================
+
+function exportFTFCSV() {
+
+    if (ftfData.length === 0) {
+        alert("No FTF data available.");
+        return;
+    }
+
+    let csv =
+"School,Class,Strength,Rate,Fine,Concession,Month,Date,Year,TotalFTF,GrandTotal\n";
+
+    ftfData.forEach(item => {
+
+        csv +=
+`${item.school},${item.cls},${item.strength},${item.rate},${item.fine},${item.concession},${item.month},${item.date},${item.year},${item.totalFTF},${item.grandTotal}\n`;
+
+    });
+
+    const blob = new Blob([csv], {
+        type: "text/csv"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "FTF_Register.csv";
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+// ===============================
+// Export NSB Data to CSV
+// ===============================
+
+function exportNSBCSV() {
+
+    if (nsbData.length === 0) {
+        alert("No NSB data available.");
+        return;
+    }
+
+    let csv =
+"Total,Consumption,Assets,Remaining\n";
+
+    nsbData.forEach(item => {
+
+        csv +=
+`${item.total},${item.consumption},${item.assets},${item.remaining}\n`;
+
+    });
+
+    const blob = new Blob([csv], {
+        type: "text/csv"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "NSB_Register.csv";
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+// ===============================
+// Keyboard Shortcut (Ctrl + P)
+// ===============================
+
+document.addEventListener("keydown", function(e){
+
+    if(e.ctrlKey && e.key === "p"){
+
+        e.preventDefault();
+
+        printRegister();
+
+    }
+
+});
+
+// ===============================
+// Service Worker
+// ===============================
+
+if("serviceWorker" in navigator){
+
+window.addEventListener("load",()=>{
+
+navigator.serviceWorker.register("sw.js")
+.then(()=>{
+
+console.log("Service Worker Registered");
+
+})
+.catch(err=>{
+
+console.log(err);
+
+});
+
+});
+
+}
+
+// ===============================
+// App Started
+// ===============================
+
+console.log("School FTF & NSB Register Loaded");
