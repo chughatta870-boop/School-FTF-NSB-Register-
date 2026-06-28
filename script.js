@@ -253,3 +253,166 @@ function editFTF(index){
     renderFTF();
 
 }
+// ===============================
+// NSB Register
+// ===============================
+
+document
+.getElementById("addNSB")
+.addEventListener("click", addNSB);
+
+function addNSB(){
+
+    const total =
+    Number(document.getElementById("totalAmount").value);
+
+    const consumption =
+    Number(document.getElementById("consumption").value);
+
+    const assets =
+    Number(document.getElementById("assets").value);
+
+    if(total <= 0){
+        alert("Enter Total Amount");
+        return;
+    }
+
+    const remaining =
+    total - consumption - assets;
+
+    nsbData.push({
+
+        total,
+        consumption,
+        assets,
+        remaining
+
+    });
+
+    localStorage.setItem(
+        "nsbData",
+        JSON.stringify(nsbData)
+    );
+
+    renderNSB();
+
+    clearNSB();
+
+}
+
+// ===============================
+// Render NSB Table
+// ===============================
+
+function renderNSB(){
+
+    const table =
+    document.getElementById("nsbTable");
+
+    table.innerHTML = "";
+
+    nsbData.forEach((item,index)=>{
+
+        table.innerHTML += `
+
+        <tr>
+
+        <td>Rs ${item.total}</td>
+
+        <td>Rs ${item.consumption}</td>
+
+        <td>Rs ${item.assets}</td>
+
+        <td>Rs ${item.remaining}</td>
+
+        <td>
+
+        <button class="editBtn"
+        onclick="editNSB(${index})">
+
+        Edit
+
+        </button>
+
+        <button class="deleteBtn"
+        onclick="deleteNSB(${index})">
+
+        Delete
+
+        </button>
+
+        </td>
+
+        </tr>
+
+        `;
+
+    });
+
+}
+
+// ===============================
+// Delete NSB
+// ===============================
+
+function deleteNSB(index){
+
+    if(confirm("Delete this record?")){
+
+        nsbData.splice(index,1);
+
+        localStorage.setItem(
+        "nsbData",
+        JSON.stringify(nsbData));
+
+        renderNSB();
+
+    }
+
+}
+
+// ===============================
+// Edit NSB
+// ===============================
+
+function editNSB(index){
+
+    const item = nsbData[index];
+
+    document.getElementById("totalAmount").value =
+    item.total;
+
+    document.getElementById("consumption").value =
+    item.consumption;
+
+    document.getElementById("assets").value =
+    item.assets;
+
+    nsbData.splice(index,1);
+
+    localStorage.setItem(
+    "nsbData",
+    JSON.stringify(nsbData));
+
+    renderNSB();
+
+}
+
+// ===============================
+// Clear NSB Form
+// ===============================
+
+function clearNSB(){
+
+document.getElementById("totalAmount").value="";
+document.getElementById("consumption").value="";
+document.getElementById("assets").value="";
+
+}
+
+// ===============================
+// Load Saved Data
+// ===============================
+
+renderFTF();
+renderNSB();
